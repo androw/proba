@@ -13,6 +13,32 @@ public abstract class Simulation {
         this.name = name;
     }
 
+    public double density(int N, double x, double d) {
+        double rep = 0;
+        for (int i = 0; i<N; i++) {
+            double xsim = simulate();
+            if (x <= xsim && xsim <= x + d) rep += 1.0/(double) N;
+        }
+        return rep/d;
+    }
+
+    public double[] density(int N, double[] x, double d) {
+        double[] y = new double[x.length];
+        double[] s = new double[N];
+        for (int i = 0; i<N; i++){
+            s[i] = simulate();
+        }
+
+        for (int i = 0; i<x.length; i++){
+            double rep = 0;
+            for (int j = 0; j<N; j++) {
+                if (x[i] <= s[j] && s[j] <= x[i] + d) rep += 1.0/(double) N;
+            }
+            y[i] = rep/d;
+        }
+        return y;
+    }
+
     public double repartition(int N, double x) {
         double rep = 0;
         for (int i = 0; i<N; i++) {
@@ -23,9 +49,17 @@ public abstract class Simulation {
 
     public double[] repartition(int N, double[] x) {
         double[] y = new double[x.length];
+        double[] s = new double[N];
+        for (int i = 0; i<N; i++){
+            s[i] = simulate();
+        }
 
         for (int i = 0; i<x.length; i++){
-            y[i] = repartition(N, x[i]);
+            double rep = 0;
+            for (int j = 0; j<N; j++) {
+                if (s[j] <= x[i]) rep += 1.0/(double) N;
+            }
+            y[i] = rep;
         }
         return y;
     }

@@ -1,3 +1,5 @@
+package org.androw.proba.simulation.normal;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -5,9 +7,15 @@
  * Time: 17:18
  * Created with IntelliJ IDEA.
  */
-public class NormalPolarSimulation extends Simulation {
-    private double mu = 0;
-    private double sigma2 = 1;
+public class NormalPolarSimulation extends NormalSimulation {
+    private double mu;
+    private double sigma2;
+
+    public NormalPolarSimulation() {
+        super("Normal Polar");
+        this.mu = 0;
+        this.sigma2 = 1;
+    }
 
     public NormalPolarSimulation(double mu, double sigma2) {
         super("Normal Polar");

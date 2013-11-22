@@ -1,3 +1,5 @@
+package org.androw.proba.simulation.normal;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -5,12 +7,19 @@
  * Time: 17:09
  * Created with IntelliJ IDEA.
  */
-public class NormalSimulation extends Simulation {
-    private double mu = 0;
-    private double sigma2 = 1;
-    private int n = 100;
+public class NormalTCLSimulation extends NormalSimulation {
+    private double mu;
+    private double sigma2;
+    private int n;
 
-    public NormalSimulation(double mu, double sigma2, int n) {
+    public NormalTCLSimulation(int n) {
+        super("Normal TCL");
+        this.mu = 0;
+        this.sigma2 = 1;
+        this.n = n;
+    }
+
+    public NormalTCLSimulation(double mu, double sigma2, int n) {
         super("Normal TCL");
         this.mu = mu;
         this.sigma2 = sigma2;

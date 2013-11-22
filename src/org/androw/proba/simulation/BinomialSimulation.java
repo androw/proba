@@ -1,3 +1,5 @@
+package org.androw.proba.simulation;
+
 /**
  * Project: Probabilite
  * User: Androw

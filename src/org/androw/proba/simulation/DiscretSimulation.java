@@ -1,3 +1,5 @@
+package org.androw.proba.simulation;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -5,11 +7,11 @@
  * Time: 18:39
  * Created with IntelliJ IDEA.
  */
-public class DiscretSimulation extends Simulation{
+public class DiscretSimulation extends Simulation {
     private double[] p;
     private double[] x;
 
-    public DiscretSimulation(double[] p, double[] x) throws Exception{
+    public DiscretSimulation(double[] p, double[] x) throws Exception {
         super("Discret");
         if (x.length != p.length)
             throw new Exception(

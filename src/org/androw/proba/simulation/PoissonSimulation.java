@@ -1,3 +1,5 @@
+package org.androw.proba.simulation;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -5,7 +7,7 @@
  * Time: 18:51
  * Created with IntelliJ IDEA.
  */
-public class PoissonSimulation extends Simulation{
+public class PoissonSimulation extends Simulation {
     private double lambda;
 
     public PoissonSimulation(double lambda) {

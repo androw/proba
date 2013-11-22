@@ -1,3 +1,5 @@
+package org.androw.proba.simulation;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -7,6 +9,7 @@
  */
 public abstract class Simulation {
     public abstract double simulate();
+
     private String name;
 
     public Simulation(String name) {
@@ -15,34 +18,34 @@ public abstract class Simulation {
 
     public double density(int N, double x, double d) {
         double rep = 0;
-        for (int i = 0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             double xsim = simulate();
-            if (x <= xsim && xsim <= x + d) rep += 1.0/(double) N;
+            if (x <= xsim && xsim <= x + d) rep += 1.0 / (double) N;
         }
-        return rep/d;
+        return rep / d;
     }
 
     public double[] density(int N, double[] x, double d) {
         double[] y = new double[x.length];
         double[] s = new double[N];
-        for (int i = 0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             s[i] = simulate();
         }
 
-        for (int i = 0; i<x.length; i++){
+        for (int i = 0; i < x.length; i++) {
             double rep = 0;
-            for (int j = 0; j<N; j++) {
-                if (x[i] <= s[j] && s[j] <= x[i] + d) rep += 1.0/(double) N;
+            for (int j = 0; j < N; j++) {
+                if (x[i] <= s[j] && s[j] <= x[i] + d) rep += 1.0 / (double) N;
             }
-            y[i] = rep/d;
+            y[i] = rep / d;
         }
         return y;
     }
 
     public double repartition(int N, double x) {
         double rep = 0;
-        for (int i = 0; i<N; i++) {
-            if (simulate() <= x) rep += 1.0/(double) N;
+        for (int i = 0; i < N; i++) {
+            if (simulate() <= x) rep += 1.0 / (double) N;
         }
         return rep;
     }
@@ -50,14 +53,14 @@ public abstract class Simulation {
     public double[] repartition(int N, double[] x) {
         double[] y = new double[x.length];
         double[] s = new double[N];
-        for (int i = 0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             s[i] = simulate();
         }
 
-        for (int i = 0; i<x.length; i++){
+        for (int i = 0; i < x.length; i++) {
             double rep = 0;
-            for (int j = 0; j<N; j++) {
-                if (s[j] <= x[i]) rep += 1.0/(double) N;
+            for (int j = 0; j < N; j++) {
+                if (s[j] <= x[i]) rep += 1.0 / (double) N;
             }
             y[i] = rep;
         }
@@ -66,8 +69,8 @@ public abstract class Simulation {
 
     public double mean(int N) {
         double mean = 0;
-        for (int i = 0; i<N; i++) {
-            mean += simulate()/(double) N;
+        for (int i = 0; i < N; i++) {
+            mean += simulate() / (double) N;
         }
         return mean;
     }
@@ -75,12 +78,12 @@ public abstract class Simulation {
     public double variance(int N) {
         double var = 0;
         double mean = 0;
-        for (int i = 0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             double sim = simulate();
-            mean += sim/(double) N;
-            var += sim*sim/(double) N;
+            mean += sim / (double) N;
+            var += sim * sim / (double) N;
         }
-        return var-mean*mean;
+        return var - mean * mean;
     }
 
     public String getName() {

@@ -1,3 +1,5 @@
+package org.androw.proba.simulation;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -8,7 +10,7 @@
 public class ExponentialSimulation extends Simulation {
     private double lambda;
 
-    public ExponentialSimulation(double lambda){
+    public ExponentialSimulation(double lambda) {
         super("Exponential");
         this.lambda = lambda;
     }

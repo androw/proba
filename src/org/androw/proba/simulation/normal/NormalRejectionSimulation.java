@@ -1,3 +1,5 @@
+package org.androw.proba.simulation.normal;
+
 /**
  * Project: Probabilite
  * User: Androw
@@ -5,9 +7,15 @@
  * Time: 17:22
  * Created with IntelliJ IDEA.
  */
-public class NormalRejectionSimulation extends Simulation {
-    private double mu = 0;
-    private double sigma2 = 1;
+public class NormalRejectionSimulation extends NormalSimulation {
+    private double mu;
+    private double sigma2;
+
+    public NormalRejectionSimulation() {
+        super("Normal Rejection");
+        this.mu = 0;
+        this.sigma2 = 1;
+    }
 
     public NormalRejectionSimulation(double mu, double sigma2) {
         super("Normal Rejection");

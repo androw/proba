@@ -25,14 +25,14 @@ public class Main {
         SimulationPlots p = new SimulationPlots(100000, s, 0.00, 2.00, 0.05);
 
         BrownianMotion b1 = new BrownianMotion(10000, 100);
-        BrownianMotionNormal b2 = new BrownianMotionNormal(10000, 100, new NormalTCLSimulation(0,1.0/10000.0, 1000));
-        BrownianMotionNormal b3 = new BrownianMotionNormal(10000, 100, new NormalRejectionSimulation(0,1.0/10000.0));
-        BrownianMotionNormal b4 = new BrownianMotionNormal(10000, 100, new NormalPolarSimulation(0,1.0/10000.0));
+        //BrownianMotionNormal b2 = new BrownianMotionNormal(10000, 100, new NormalTCLSimulation(0,1.0/10000.0, 1000));
+        //BrownianMotionNormal b3 = new BrownianMotionNormal(10000, 100, new NormalRejectionSimulation(0,1.0/10000.0));
+        //BrownianMotionNormal b4 = new BrownianMotionNormal(10000, 100, new NormalPolarSimulation(0,1.0/10000.0));
         //bm.verify(1);
-        b1.draw(p);
-        b2.draw(p);
-        b3.draw(p);
-        b4.draw(p);
+        //b1.draw(p);
+        //b2.draw(p);
+        //b3.draw(p);
+        //b4.draw(p);
         //p.draw();
         p.show();
 

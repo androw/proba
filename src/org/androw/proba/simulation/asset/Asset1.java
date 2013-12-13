@@ -1,5 +1,7 @@
-package org.androw.proba.simulation;
+package org.androw.proba.simulation.asset;
 
+import org.androw.proba.SimulationPlots;
+import org.androw.proba.simulation.Simulation;
 import org.androw.proba.simulation.normal.NormalRejectionSimulation;
 
 /**
@@ -9,15 +11,18 @@ import org.androw.proba.simulation.normal.NormalRejectionSimulation;
  * Time: 16:52
  * Created with IntelliJ IDEA.
  */
-public class Asset extends Simulation {
+public class Asset1 extends Simulation {
     private int N;
     private double dt;
     private double r;
     private double T;
     private double sigma;
     private double S0;
-    public Asset(int N, double T, double r, double sigma, double S0) {
-        super("Asset");
+
+    private double[] S;
+
+    public Asset1(int N, double T, double r, double sigma, double S0) {
+        super("Asset1");
         this.N = N;
         this.T = T;
         this.r = r;
@@ -34,11 +39,19 @@ public class Asset extends Simulation {
         for (int i=1; i<N; i++) {
             W[i] = W[i-1] + Math.sqrt(this.dt)*normal.simulate();
         }
-        double[] S = new double[this.N];
+        S = new double[this.N];
         S[0] = this.S0;
         for (int i=1; i<N; i++) {
-            S[i] = S[i-1]*(1+this.r*this.dt) + sigma*(W[i]-W[i-1]);
+            S[i] = S[i-1]*((1+this.r*this.dt) + sigma*(W[i]-W[i-1]));
         }
         return S[this.N-1];
+    }
+
+    public void draw(SimulationPlots p) {
+        double[] y = new double[this.S.length];
+        for (int i = 0; i < this.S.length; i++) {
+            y[i] = dt * i;
+        }
+        p.draw(y, S, "Asset1 price");
     }
 }

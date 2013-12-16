@@ -28,23 +28,23 @@ public class Asset1 extends Simulation {
         this.r = r;
         this.sigma = sigma;
         this.S0 = S0;
-        this.dt = T/((double) N);
+        this.dt = T / ((double) N);
 
     }
 
     public double simulate() {
-        Simulation normal = new NormalRejectionSimulation(0.0,1.0);
+        Simulation normal = new NormalRejectionSimulation(0.0, 1.0);
         double[] W = new double[this.N];
         W[0] = 0;
-        for (int i=1; i<N; i++) {
-            W[i] = W[i-1] + Math.sqrt(this.dt)*normal.simulate();
+        for (int i = 1; i < N; i++) {
+            W[i] = W[i - 1] + Math.sqrt(this.dt) * normal.simulate();
         }
         S = new double[this.N];
         S[0] = this.S0;
-        for (int i=1; i<N; i++) {
-            S[i] = S[i-1]*((1+this.r*this.dt) + sigma*(W[i]-W[i-1]));
+        for (int i = 1; i < N; i++) {
+            S[i] = S[i - 1] * ((1 + this.r * this.dt) + sigma * (W[i] - W[i - 1]));
         }
-        return S[this.N-1];
+        return S[this.N - 1];
     }
 
     public void draw(SimulationPlots p) {

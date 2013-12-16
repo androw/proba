@@ -33,37 +33,37 @@ public class Option extends Simulation {
     }
 
     public double simulate(double S0) {
-        Simulation normal = new NormalRejectionSimulation(0.0,1.0);
-        double[] N = new double [Nmc+1];
-        for (int i = 1; i< Nmc+1; i++) {
+        Simulation normal = new NormalRejectionSimulation(0.0, 1.0);
+        double[] N = new double[Nmc + 1];
+        for (int i = 1; i < Nmc + 1; i++) {
             N[i] = normal.simulate();
         }
         double V = 0;
-        for (int i = 1; i < Nmc+1; i++) {
-            V = V + Math.exp(-r*T)*Math.max(S0*Math.exp((r-sigma*sigma/2.0)*T+sigma*Math.sqrt(T)*N[i])-K,0)/Nmc;
+        for (int i = 1; i < Nmc + 1; i++) {
+            V = V + Math.exp(-r * T) * Math.max(S0 * Math.exp((r - sigma * sigma / 2.0) * T + sigma * Math.sqrt(T) * N[i]) - K, 0) / Nmc;
         }
         return V;
     }
 
     public double simulate() {
-        Simulation normal = new NormalRejectionSimulation(0.0,1.0);
-        double[] N = new double [Nmc+1];
-        for (int i = 1; i< Nmc+1; i++) {
+        Simulation normal = new NormalRejectionSimulation(0.0, 1.0);
+        double[] N = new double[Nmc + 1];
+        for (int i = 1; i < Nmc + 1; i++) {
             N[i] = normal.simulate();
         }
         double V = 0;
-        for (int i = 1; i < Nmc+1; i++) {
-            V = V + Math.exp(-r*T)*Math.max(this.S0*Math.exp((r-sigma*sigma/2.0)*T+sigma*Math.sqrt(T)*N[i])-K,0)/Nmc;
+        for (int i = 1; i < Nmc + 1; i++) {
+            V = V + Math.exp(-r * T) * Math.max(this.S0 * Math.exp((r - sigma * sigma / 2.0) * T + sigma * Math.sqrt(T) * N[i]) - K, 0) / Nmc;
         }
         return V;
     }
 
     public void draw(SimulationPlots p) {
-        double[] x = new double[this.N+1];
-        double[] y = new double[this.N+1];
+        double[] x = new double[this.N + 1];
+        double[] y = new double[this.N + 1];
         for (int i = 0; i < x.length; i++) {
-            x[i] = simulate(this.L/(this.N+1) * i);
-            y[i] = this.L/(this.N+1)* i;
+            x[i] = simulate(this.L / (this.N + 1) * i);
+            y[i] = this.L / (this.N + 1) * i;
         }
         p.draw(y, x, "Option price");
     }

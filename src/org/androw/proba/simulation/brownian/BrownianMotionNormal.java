@@ -21,7 +21,7 @@ public class BrownianMotionNormal extends Simulation {
     private List<Double> x;
 
     public BrownianMotionNormal(int N, double tmax, NormalSimulation n) throws Exception {
-        super("Brownian "+n.getName());
+        super("Brownian " + n.getName());
         this.N = N;
         this.tmax = tmax;
         this.n = n;
@@ -65,8 +65,8 @@ public class BrownianMotionNormal extends Simulation {
             var = var + simulate(t) * simulate(t) / 1000.0;
             reset();
         }
-        System.out.println("Simulated average: "+esp);
-        System.out.println("Simulated variance: "+(var - esp * esp));
+        System.out.println("Simulated average: " + esp);
+        System.out.println("Simulated variance: " + (var - esp * esp));
     }
 
     public void draw(SimulationPlots p) {

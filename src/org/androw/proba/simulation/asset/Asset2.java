@@ -31,14 +31,13 @@ public class Asset2 extends Simulation {
     }
 
     public double simulate() {
-        Simulation normal = new NormalRejectionSimulation(0.0,1.0);
-        S = new double[(int)Math.floor(this.T/this.dt)];
+        Simulation normal = new NormalRejectionSimulation(0.0, 1.0);
+        S = new double[(int) Math.floor(this.T / this.dt)];
         S[0] = this.S0;
-        for (int i=1; i<S.length; i++) {
-            S[i] = S[i-1]*Math.exp(this.dt*(this.r-this.sigma*this.sigma/2.0)+Math.sqrt(this.dt)*this.sigma*normal.simulate());
-            System.out.println(this.dt*(this.r-this.sigma*this.sigma/2.0));
+        for (int i = 1; i < S.length; i++) {
+            S[i] = S[i - 1] * Math.exp(this.dt * (this.r - this.sigma * this.sigma / 2.0) + Math.sqrt(this.dt) * this.sigma * normal.simulate());
         }
-        return S[S.length-1];
+        return S[S.length - 1];
     }
 
     public void draw(SimulationPlots p) {

@@ -1,13 +1,9 @@
 package org.androw.proba;
 
-import org.androw.proba.simulation.*;
+import org.androw.proba.simulation.Option;
+import org.androw.proba.simulation.Simulation;
 import org.androw.proba.simulation.asset.Asset1;
 import org.androw.proba.simulation.asset.Asset2;
-import org.androw.proba.simulation.brownian.BrownianMotion;
-import org.androw.proba.simulation.brownian.BrownianMotionNormal;
-import org.androw.proba.simulation.normal.NormalPolarSimulation;
-import org.androw.proba.simulation.normal.NormalRejectionSimulation;
-import org.androw.proba.simulation.normal.NormalTCLSimulation;
 
 public class Main {
 
@@ -25,17 +21,17 @@ public class Main {
         //s[0] = new NormalPolarSimulation(0,1);
 
         SimulationPlots p = new SimulationPlots(100000, s, 0.00, 2.00, 0.05);
-        Asset1 a = new Asset1(100,0.5,0.1,0.5,10);
-        //a.simulate();
-        //a.draw(p);
+        Asset1 a = new Asset1(100, 0.5, 0.1, 0.5, 10);
+        a.simulate();
+        a.draw(p);
 
-        Asset2 b = new Asset2(0.005,0.5,0.1,0.5,10);
-        //b.simulate();
-        //b.draw(p);
+        Asset2 b = new Asset2(0.005, 0.5, 0.1, 0.5, 10);
+        b.simulate();
+        b.draw(p);
 
-        Option o = new Option(1000,0.5,0.1,0.5,199,20,10,10);
+        Option o = new Option(1000, 0.5, 0.1, 0.5, 199, 20, 10, 10);
         //.simulate();
-        o.draw(p);
+        //o.draw(p);
 
         //BrownianMotion b1 = new BrownianMotion(10000, 100);
         //BrownianMotionNormal b2 = new BrownianMotionNormal(10000, 100, new NormalTCLSimulation(0,1.0/10000.0, 1000));

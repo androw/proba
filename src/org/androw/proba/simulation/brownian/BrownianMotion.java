@@ -67,8 +67,8 @@ public class BrownianMotion extends Simulation {
             var = var + simulate(t) * simulate(t) / 1000.0;
             reset();
         }
-        System.out.println("Simulated average: "+esp);
-        System.out.println("Simulated variance: "+(var - esp * esp));
+        System.out.println("Simulated average: " + esp);
+        System.out.println("Simulated variance: " + (var - esp * esp));
     }
 
     public void draw(SimulationPlots p) {

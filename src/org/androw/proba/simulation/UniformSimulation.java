@@ -1,7 +1,5 @@
 package org.androw.proba.simulation;
 
-import org.androw.proba.simulation.Simulation;
-
 /**
  * Project: proba
  * User: Androw
